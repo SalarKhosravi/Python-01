@@ -160,3 +160,61 @@ w = float("4.2") # w will be 4.2
 x = str("s1") # x will be 's1'
 y = str(2)    # y will be '2'
 z = str(3.0)  # z will be '3.0'
+
+
+
+
+
+
+
+
+
+
+# Python Strings
+# 'hello' is the same as "hello".
+
+print("Hello")
+print('Hello')
+
+print("It's alright")
+print("He is called 'Johnny'")
+print('He is called "Johnny"')
+
+
+# Multiline Strings
+
+
+a = "Hello"
+print(a)
+
+a = """Lorem ipsum dolor sit amet,
+consectetur adipiscing elit,
+sed do eiusmod tempor incididunt
+ut labore et dolore magna aliqua."""
+print(a)
+
+
+
+a = '''Lorem ipsum dolor sit amet,
+consectetur adipiscing elit,
+sed do eiusmod tempor incididunt
+ut labore et dolore magna aliqua.'''
+
+print(a)
+
+
+
+# String Length
+txt = "Hello, World!"
+print(len(txt)) # 13
+
+
+# Check String
+txt = "The best things in life are free!"
+print("free" in txt)
+
+txt = "The best things in life are free!"
+if "free" in txt:
+  print("Yes, 'free' is present.")
+
+  
