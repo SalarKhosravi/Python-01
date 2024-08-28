@@ -104,7 +104,6 @@ del thisset
 # --------------------------------------------------------------
 
 thisset = {"apple", "banana", "cherry"}
-
 for x in thisset:
   print(x)
 
@@ -126,7 +125,6 @@ for x in thisset:
 # The union() method returns a new set with all items from both sets.
 set1 = {"a", "b", "c"}
 set2 = {1, 2, 3}
-
 set3 = set1.union(set2)
 set3 = set1 | set2
 print(set3)
@@ -140,7 +138,6 @@ print(set3)
 # The update() changes the original set, and does not return a new set.
 set1 = {"a", "b" , "c"}
 set2 = {1, 2, 3}
-
 set1.update(set2)
 print(set1)
 
@@ -151,10 +148,8 @@ print(set1)
 # Keep ONLY the duplicates
 set1 = {"apple", "banana", "cherry"}
 set2 = {"google", "microsoft", "apple"}
-
 set3 = set1.intersection(set2)
 set3 = set1 & set2
-
 print(set3)
 
 
@@ -167,7 +162,6 @@ print(set3)
 #  it will change the original set 
 set1 = {"apple", "banana", "cherry"}
 set2 = {"google", "microsoft", "apple"}
-
 set1.intersection_update(set2)
 print(set1)
 
@@ -180,6 +174,9 @@ set1 = {"apple", 1,  "banana", 0, "cherry"}
 set2 = {False, "google", 1, "apple", 2, True}
 set3 = set1.intersection(set2)
 print(set3) #{False, True, 'apple'}
+
+
+
 
 
 # Difference
@@ -206,10 +203,8 @@ print(set1)
 # Keep the items that are not present in both sets:
 set1 = {"apple", "banana", "cherry"}
 set2 = {"google", "microsoft", "apple"}
-
 set3 = set1.symmetric_difference(set2)
 set3 = set1 ^ set2
-
 print(set3)
 
 
@@ -219,3 +214,42 @@ set1 = {"apple", "banana", "cherry"}
 set2 = {"google", "microsoft", "apple"}
 set1.symmetric_difference_update(set2)
 print(set1)
+
+
+
+
+
+
+
+
+
+# Condition
+# --------------------------------------------------------------
+set1 = {"apple", "banana", "cherry"}
+if 'apple' in set1:
+  print('apple is here')
+
+if not ('apple' not in set1):
+  print('apple is here')
+
+
+
+# Return True if all items in set x are present in set y:
+x = {"a", "b", "c"}
+y = {"f", "e", "d", "c", "b", "a"}
+print(x.issubset(y))
+print(x <= y)
+
+
+# Return True if all items set y are present in set x:
+x = {"f", "e", "d", "c", "b", "a"}
+y = {"a", "b", "c"}
+print(x.issuperset(y))
+print(x >= y)
+
+
+# check if there is any intersection
+# Return True if no items in set x is present in set y:
+x = {"apple", "banana", "cherry"}
+y = {"google", "microsoft", "facebook"}
+print(x.isdisjoint(y))
