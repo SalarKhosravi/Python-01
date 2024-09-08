@@ -1,433 +1,255 @@
-# Functions
-#-----------------------------------------------------------
-# def functionaName(input):
-#   codes body
-# call the function
+# Sets
+# --------------------------------------------------------------
+# set is unordered, unchangeable, unindexed, and do not allow duplicate values (but you can remove items and add new items.)
+thisset = {"apple", "banana", "cherry"} # how to define
+thisset = {1, 7, 5, 3, 4, 2, 6, 8} 
+print(thisset) # unorder
 
-#-----------------------------------------------------------
+# print(thisset[1]) #unindex
 
-def myfunc(x, y):
-  return x + y
-
-z = myfunc(2,3)
-print(z)        # 5
-
+# Duplicates Not Allowed
+thisset = {"apple", "banana", "cherry", "apple"}
+print(thisset)
 
 
-
-# Sample function: a function that greet based on gender and age
-#-----------------------------------------------------------
-def say_hello(name, gender, age):
-  if gender == 'male':
-    if age > 18:
-      print(f"Hello sir {name}")
-    elif age > 9:
-      print(f"Hi {name}")
-    else:
-      print(f"Hi {name}, my little boy")
-  else:
-    if age > 18:
-      print(f"Hello madam {name}")
-    elif age > 9:
-      print(f"Hi {name}")
-    else:
-      print(f"Hi {name}, my cute girl")
+# Note: The values True and 1 are considered the same value in sets, and are treated as duplicates:
+thisset = {"1", 1, True}
+print(thisset)
 
 
-say_hello('Sara', 'female', 5)
-say_hello('Emilly', 'female', 15)
-say_hello('Anne', 'female', 43)
-
-say_hello('Nick', 'male', 6)
-say_hello('Jack', 'male', 16)
-say_hello('Adam', 'male', 28)
-
-say_hello(name = 'Adam', age = 28, gender = 'male')
-say_hello(age = 28, name = 'Adam', gender = 'male')
+# Note: The values False and 0 are considered the same value in sets, and are treated as duplicates:
+thisset = {"0", 0, False}
+print(thisset)
+print(len(thisset))
+print(type(thisset))
 
 
 
-
-
-# Simple FUnction to calculate the sum of numbers in a list
-#-----------------------------------------------------------
-def sum_list_values(li):
-  total = 0
-  for i in li:
-    total += i
-    
-  return total
-
-li = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-sum = sum_list_values(li)
-print(sum)
+# A set can contain different data types:
+thisset = {"abc", 34, True, 40, "male"}
+print(thisset)
 
 
 
+# The set() Constructor
+thisset = set(("apple", "banana", "cherry")) # note the double round-brackets
+print(thisset)
 
 
-# write a function like range()
-# Step 1: Basic Code
-#-----------------------------------------------------------
-def myrange(start, end, step):
-  i = start
-  mylist = []
-  while i < end: 
-    if i % step == 0:
-      mylist.append(i)
-    i += 1
-  return mylist
+
+# Access Items
+# --------------------------------------------------------------
+# We can not use index as it is unorder and unindexed
+thisset = {"apple", "banana", "cherry"}
+for x in thisset:
+  print(x)
+
+print("banana" in thisset)
+print("banana" not in thisset)
 
 
-x = myrange(0, 10, 1)
+
+# Add Set Items
+# cannot change its items, but you can add new items
+# add()
+thisset = {"apple", "banana", "cherry"}
+thisset.add("orange")
+print(thisset)
+
+
+# update()
+thisset = {"apple", "banana", "cherry"}
+tropical = {"pineapple", "mango", "papaya"}
+thisset.update(tropical)
+print(thisset)
+
+
+
+# Remove Item
+# --------------------------------------------------------------
+thisset = {"apple", "banana", "cherry"}
+thisset.remove("banana")     # If the item to remove does not exist, remove() will raise an error.
+thisset.discard("banana")    # If the item to remove does not exist, discard() will NOT raise an error.
+print(thisset) 
+
+
+
+# Sets are unordered, so when using the pop() method, you do not know which item that gets removed.
+thisset = {"apple", "banana", "cherry"}
+x = thisset.pop()
 print(x)
-# x = myrange(end=10)
+print(thisset)
 
 
+# The clear() method empties the set:
+thisset = {"apple", "banana", "cherry"}
+thisset.clear()
+print(thisset)
 
 
-# Step 2: Medium Code
-#-----------------------------------------------------------
-def myRange2(start = 0, end = None, step = 1):
-  # validation quantity
-  if end == None:
-    return 'invalid input'
 
-  # validation type
-  if type(start) != int or type(end) != int or type(step) != int:
-    return 'input must be integer'
-
-  i = start
-  mylist = []
-  while i < end: 
-    if i % step == 0:
-      mylist.append(i)
-    i += 1
-  return mylist
-
-
-
-x = myRange2(3, 10, 2)
-print(x)    
-
-x = myRange2(0, 10, "a")
-print(x)
-
-x = myRange2(0, 10, None)
-print(x)
-
-x = myRange2(0, 10, None)
-x = myRange2(start=10, end= 20)
-x = myRange2()
-
-
-
-
-# Step 3: Good Code
-#-----------------------------------------------------------
-def myRange3(start=None, end=None, step=None):
-    # Handle cases where only one argument is provided (like range(stop))
-    if end is None:
-        if start is None:
-            raise ValueError("At least one argument must be provided")
-        end = start
-        start = 0
-
-    # Default step to 1 if not provided
-    if step is None:
-        step = 1
-
-    # Check if start, end, and step are integers
-    if not all(isinstance(arg, int) for arg in [start, end, step]):
-        return 'input must be integer'
-    
-    # Check if step is zero
-    if step == 0:
-        raise ValueError("step argument must not be zero")
-
-    mylist = []
-    i = start
-    
-    # Generate the range
-    if step > 0:
-        while i < end:
-            mylist.append(i)
-            i += step
-    else:
-        while i > end:
-            mylist.append(i)
-            i += step
+# The del keyword will delete the set completely:
+thisset = {"apple", "banana", "cherry"}
+del thisset
+# print(thisset) #raise error
 
-    return mylist
 
-print(myRange3(0, 10, 1))   # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-print(myRange3(0, 11, 2))   # [0, 2, 4, 6, 8, 10]
-print(myRange3(3, 10, 2))   # [3, 5, 7, 9]
-print(myRange3(0, 10, "a")) # input must be integer
-print(myRange3(0, 10, None)) # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-print(myRange3(None, 10, None)) # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-print(myRange3(10, 0, -2))   # [10, 8, 6, 4, 2]
 
-x = myRange3(10)
-print(x)
 
 
 
 
 
-# Step 4: Really advanced
-#-----------------------------------------------------------
-# Function for real Range() function to accpt input in this format (start:end:step)
-def my_real_range(inputText):
-    # Split the input string by ':'
-    parts = inputText.split(':')
+# Loop Sets
+# --------------------------------------------------------------
 
-    # Initialize default values
-    start = 0
-    end = None
-    step = 1
-    
-    # Convert parts to integers and handle missing values
-    if len(parts) == 3:
-        start = int(parts[0]) if parts[0] else 0
-        end = int(parts[1]) if parts[1] else None
-        step = int(parts[2]) if parts[2] else 1
-    elif len(parts) == 2:
-        start = int(parts[0]) if parts[0] else 0
-        end = int(parts[1])
-        step = 1
-    elif len(parts) == 1:
-        start = 0
-        end = int(parts[0])
-        step = 1
-    else:
-        return 'invalid input'
-    
-    # Default values for start, step, and end
-    if end is None:
-        raise ValueError("End cannot be unknown")
-    
-    if step is None:
-        step = 1
-    if start is None:
-        start = 0
-    
-    if step == 0:
-        raise ValueError("step argument must not be zero")
+thisset = {"apple", "banana", "cherry"}
+for x in thisset:
+  print(x)
 
-    # Generate the range list
-    mylist = []
-    i = start
-    
-    if step > 0:
-        while i < end:
-            mylist.append(i)
-            i += step
-    else:
-        while i > end:
-            mylist.append(i)
-            i += step
 
-    return mylist
 
 
-# Test cases
-print(my_real_range("0:10:1"))   # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-print(my_real_range("0:11:2"))   # [0, 2, 4, 6, 8, 10]
-print(my_real_range("3:10:2"))   # [3, 5, 7, 9]
-print(my_real_range("10:0:-2"))  # [10, 8, 6, 4, 2]
-print(my_real_range("0:10"))     # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-print(my_real_range(":10:"))     # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-print(my_real_range(":20:2"))     # [5, 7, 9]
 
+# Join Sets
+# --------------------------------------------------------------
+# There are several ways to join two or more sets in Python.
+# 1- The union() and update() methods joins all items from both sets.
+# 2- The intersection() method keeps ONLY the duplicates.
+# 3- The difference() method keeps the items from the first set that are not in the other set(s).
+# 4- The symmetric_difference() method keeps all items EXCEPT the duplicates.
 
 
 
 
+# The union() method returns a new set with all items from both sets.
+set1 = {"a", "b", "c"}
+set2 = {1, 2, 3}
+set3 = set1.union(set2)
+set3 = set1 | set2
+print(set3)
 
 
 
 
 
+# Update
+# The update() method inserts all items from one set into another.
+# The update() changes the original set, and does not return a new set.
+set1 = {"a", "b" , "c"}
+set2 = {1, 2, 3}
+set1.update(set2)
+print(set1)
 
 
 
-# unlimited inputs with *args for list alike
-#-----------------------------------------------------------
-def my_sum(*args):
-  # print(args) # give me a tuple
-  total = 0
-  for i in args:
-    total += i
 
-  print(total)
+# Intersection
+# Keep ONLY the duplicates
+set1 = {"apple", "banana", "cherry"}
+set2 = {"google", "microsoft", "apple"}
+set3 = set1.intersection(set2)
+set3 = set1 & set2
+print(set3)
 
 
-my_sum(3)
-my_sum(3, 2)
-my_sum(3, 2, 4)
-my_sum(3, 2, 4, 4, 5, 6, 8, 1, 2, 24, 13, 8 , 9, 10, 11, 200)
 
 
-def my_func(x, *args):
-  print(args)
 
-my_func(1, 2, 3, 4)
 
 
 
+#  it will change the original set 
+set1 = {"apple", "banana", "cherry"}
+set2 = {"google", "microsoft", "apple"}
+set1.intersection_update(set2)
+print(set1)
 
 
 
 
-# unlimited inputs with **kwargs for list alike
-#-----------------------------------------------------------
-def my_print(**kwargs):
-  print(kwargs)
-  for key, value in kwargs.items():
-    print(f"key: {key}, value: {value}")
 
-my_print(name = "Ali", Family = "Kho", Age = 25, married = True)
+# Join sets that contains the values True, False, 1, and 0, and see what is considered as duplicates:
+set1 = {"apple", 1,  "banana", 0, "cherry"}
+set2 = {False, "google", 1, "apple", 2, True}
+set3 = set1.intersection(set2)
+print(set3) #{False, True, 'apple'}
 
 
 
 
 
+# Difference
+# Keep all items from set1 that are not in set2:
+set1 = {"apple", "banana", "cherry"}
+set2 = {"google", "microsoft", "apple"}
+set3 = set1.difference(set2)
+set3 = set1 - set2
+print(set3)
 
 
 
 
+# difference_update
+# Use the difference_update() method to keep the items that are not present in both sets:
+set1 = {"apple", "banana", "cherry"}
+set2 = {"google", "microsoft", "apple"}
+set1.difference_update(set2)
+print(set1)
 
-# Order of inputs for functions
-#-----------------------------------------------------------
-# order is like this:
-  # parameters
-  # *args
-  # default
-  # **kwargs
 
 
-def my_func(x, y, *args, z = 'ddd', **kwargs):
-  return (x, y, args, z, kwargs)
+# symmetric_difference()
+# Keep the items that are not present in both sets:
+set1 = {"apple", "banana", "cherry"}
+set2 = {"google", "microsoft", "apple"}
+set3 = set1.symmetric_difference(set2)
+set3 = set1 ^ set2
+print(set3)
 
 
-print(my_func(2, 3, 4, 5, 6, name = 'Ali', age = 25))
-print(my_func(2, 3, 4, 5, 6, z = 18, name = 'Ali', age = 25))
 
+# symmetric_difference_update()
+set1 = {"apple", "banana", "cherry"}
+set2 = {"google", "microsoft", "apple"}
+set1.symmetric_difference_update(set2)
+print(set1)
 
 
 
 
 
-# Unpack input for LIST
-#--------------------------------------------------
 
-print('\n \n# Unpack input ---------------------------')
-def my_sum(*args):
-  print(args)
-  total = 0
-  for i in args:
-    total += i
 
-  return total
 
-li = [1, 2, 3, 4, 5, 6, 7]
-# x = my_sum(li)
-x = my_sum(*li)
-print(x)
 
+# Condition
+# --------------------------------------------------------------
+set1 = {"apple", "banana", "cherry"}
+if 'apple' in set1:
+  print('apple is here')
 
+if not ('apple' not in set1):
+  print('apple is here')
 
 
 
-# Unpack input for DICTIONARY
-#--------------------------------------------------
+# Return True if all items in set x are present in set y:
+x = {"a", "b", "c"}
+y = {"f", "e", "d", "c", "b", "a"}
+print(x.issubset(y))
+print(x <= y)
 
-def display_name(name, family):
-  print(f"Hello {name} {family}")
 
+# Return True if all items set y are present in set x:
+x = {"f", "e", "d", "c", "b", "a"}
+y = {"a", "b", "c"}
+print(x.issuperset(y))
+print(x >= y)
 
-display_name("Ali", "Akbari") # Hello Ali Akbari
 
-
-person = {
-  "name": "Ali",
-  "family": "Akbari"
-}
-
-display_name(*person)  #send key and values
-# Hello Ali Akbari
-# Hello name family
-
-display_name(**person)  # send keys only
-
-
-
-
-# Lambda: a function without name that must be only one line
-#--------------------------------------------------
-
-# ordinary function
-def my_square(x):
-  print(x * x)
-# single line function
-def my_square(x): print(x * x)
-
-# its lambda
-val = lambda x: print(x * x)
-val(5)
-
-print(val.__name__)
-
-
-
-# ordinary function: it is only in one line
-def my_sum(x, y):
-  print(x + y)
-my_sum(10, 5)
-
-
-
-# single line function
-def my_sum(x, y): print(x + y)
-my_sum(5, 5)
-
-
-
-# lambda use case: when i want to call a function inside another function
-# map: is a function that recieve a function and a iterable data(like set or list) , and do it
-# map(func, iterable)
-#--------------------------------------------------
-
-# ordinary solution
-li = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-double = []
-for item in li:
-  double.append(item * 2)
-print(double)
-
-# advanced solution
-double = []
-double = map(lambda item: item * 2, li)    # <map object at 0x10b54d210>
-print(list(double))
-print(list(double))
-
-
-
-
-# simple example: Extraxt family form list of dict
-
-users = [
-  { "name": "Ali", "family": "Mahdavi", "age": 25},
-  { "name": "Mina", "family": "Habibi", "age": 25},
-  { "name": "Omid", "family": "Khoram", "age": 25},
-  { "name": "Reza", "family": "Akbari", "age": 25},
-]
-
-families = []
-for item in users:
-  families.append(item['family'])
-
-print(families)
-
-print(list(map(lambda x: x["family"], users)))
+# check if there is any intersection
+# Return True if no items in set x is present in set y:
+x = {"apple", "banana", "cherry"}
+y = {"google", "microsoft", "facebook"}
+print(x.isdisjoint(y))
