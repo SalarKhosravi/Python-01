@@ -431,3 +431,28 @@ for item in users:
 print(families)
 
 print(list(map(lambda x: x["family"], users)))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# for session 21
+# -----------------------------------------
+person1 = {
+  "name": "John",
+  "age": 36,
+  "country": "Norway"
+}
