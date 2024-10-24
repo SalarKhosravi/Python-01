@@ -1,3 +1,32 @@
+# modules
+# --------------------------------------------------
+# import modules.dataFile
+# x = modules.dataFile.products
+# print(x)
+
+
+
+# Naming a Module
+# --------------------------------------------------
+# import session_17 as s
+# D = s.thistuple
+# print(D)
+
+# import modules.mymodule01 as x
+# x.greeting("Jonathan")
+
+
+# # Import From Module
+# from modules.mymodule01 import greeting
+# greeting("Jonathan")
+
+# from modules.mymodule01 import *
+# greeting("Jonathan")
+
+
+
+
+
 # Map
 # syntax: map(function, iterable) -> applies the function to each element of the iterable and returns a new iterable
 # ---------------------------------------------
